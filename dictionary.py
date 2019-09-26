@@ -1,11 +1,14 @@
 import json
-database = json.load(open("data.json"))
-import difflib
 from difflib import get_close_matches
+
+database = json.load(open("data.json"))
+
 query = input("Enter word here: ")
 query = query.lower()
+
 proper_noun = query[0].upper()+query[1:].lower()
 acronym = query.upper()
+
 def dic(w):
     if query in database.keys():
         definition = database[query]
@@ -27,7 +30,8 @@ def dic(w):
             return "We didn't understand your entry"
     else:
         return "We could not find that word"
-output = dic(query)
+
+    output = dic(query)
 if type(output) == list:
     for item in output:
         print(item)
